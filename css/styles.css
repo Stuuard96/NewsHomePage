@@ -134,12 +134,12 @@ input[type='submit'] {
   bottom: 0;
   right: 0;
   width: 60%;
-  height: 100%;
   max-width: 40rem;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease-in-out;
   pointer-events: none;
+  overflow-y: auto;
   background: var(--color-neutral-off-white);
 
   display: grid;
@@ -178,7 +178,7 @@ input[type='submit'] {
 .hero__img {
   width: 100%;
   aspect-ratio: 1/1;
-  max-height: 300px;
+  max-height: 30rem;
   background-image: url('../assets/images/image-web-3-mobile.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -186,12 +186,11 @@ input[type='submit'] {
 }
 
 .hero__texts {
-  margin: 4rem 0;
+  padding: 4rem 0;
 }
 
 .hero__title {
   font-size: 3rem;
-  line-height: 1.5;
   font-weight: 700;
   color: var(--color-neutral-dark-blue);
 }
@@ -204,7 +203,7 @@ input[type='submit'] {
   color: var(--color-neutral-off-white);
   background-color: var(--color-primary-soft-red);
   display: inline-block;
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 2.5rem;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
 }
@@ -272,6 +271,103 @@ input[type='submit'] {
 .products__product {
   margin: 0.5rem 0;
   color: var(--color-neutral-dark-blue);
+}
+
+@media (min-width: 768px) {
+  /* header */
+  .nav {
+    height: 10rem;
+  }
+
+  .nav::before {
+    content: unset;
+  }
+
+  .nav__menu,
+  .nav__close {
+    display: none;
+  }
+
+  .nav__links {
+    position: unset;
+    width: unset;
+    max-width: unset;
+    transform: unset;
+    transform-origin: unset;
+    transition: none;
+    pointer-events: unset;
+    background: var(--color-neutral-off-white);
+    overflow-y: unset;
+
+    grid-auto-flow: column;
+    grid-auto-rows: unset;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  /* main */
+  .main {
+    grid-template-rows: repeat(2, max-content);
+    grid-template-areas: 'hero hero hero hero aside aside' 'products products products products products products';
+    gap: 4rem 2rem;
+  }
+
+  /* hero */
+  .hero {
+    display: grid;
+    align-content: space-between;
+  }
+
+  .hero__img {
+    background-image: url('../assets/images/image-web-3-desktop.jpg');
+  }
+
+  .hero__texts {
+    padding: 2rem 0 0 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero__title {
+    font-size: 5rem;
+    line-height: 1;
+    font-weight: 700;
+    width: 50%;
+  }
+
+  .hero__paragraph {
+    padding: 0;
+  }
+
+  .hero__copy {
+    width: 50%;
+    display: flex;
+    gap: 2rem;
+    align-self: stretch;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero__cta {
+    align-self: start;
+  }
+
+  /* aside */
+
+  .aside__article {
+    padding: 2rem 0;
+  }
+
+  .aside__title {
+    font-size: 3.5rem;
+  }
+
+  /* products */
+  .products {
+    grid-auto-flow: column;
+    padding: 1rem 0 4rem;
+  }
 }
 
 /************** Buscar fallas de desbordamiento *************/
