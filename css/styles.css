@@ -22,17 +22,13 @@ html {
   --color-text: #333;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 /* Establecemos la fuente y el color predeterminado */
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   line-height: 1.5;
   color: var(--color-text);
+  min-height: 100vh;
 }
 
 h1,
@@ -81,12 +77,21 @@ input[type='submit'] {
 }
 
 /* header */
+.header {
+  position: sticky;
+  top: 0;
+  height: 8rem;
+  background-color: #fff;
+  box-shadow: rgba(33, 35, 38, 0.66) 0px 10px 10px -10px;
+  z-index: 100;
+}
+
 .nav {
   display: grid;
   grid-template-columns: repeat(2, max-content);
   align-items: center;
   justify-content: space-between;
-  height: 8rem;
+  height: inherit;
 
   --transform-hamburguer: scale(1);
   --transform-close: scale(0);
@@ -98,8 +103,9 @@ input[type='submit'] {
 }
 
 .nav::before {
+  display: block;
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.66);
   pointer-events: none;
@@ -129,7 +135,7 @@ input[type='submit'] {
 }
 
 .nav__links {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
@@ -275,7 +281,7 @@ input[type='submit'] {
 
 @media (min-width: 768px) {
   /* header */
-  .nav {
+  .header {
     height: 10rem;
   }
 
@@ -368,12 +374,3 @@ input[type='submit'] {
     grid-template-columns: repeat(auto-fit, minmax(30rem, auto));
   }
 }
-
-/************** Buscar fallas de desbordamiento *************/
-/* *{
-    background: #000 !important;
-    color: #0f0 !important;
-    outline: solid #f00 1px !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-  } */
